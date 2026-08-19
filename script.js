@@ -1,28 +1,42 @@
+/* =========================
+   О КОМПАНИИ
+========================= */
+
 const openAbout = document.getElementById("openAbout");
 const closeAbout = document.getElementById("closeAbout");
 const aboutModal = document.getElementById("aboutModal");
 
-openAbout.addEventListener("click", function() {
+openAbout.addEventListener("click", function (event) {
+    event.preventDefault();
     aboutModal.classList.add("active");
 });
 
-closeAbout.addEventListener("click", function() {
+closeAbout.addEventListener("click", function () {
     aboutModal.classList.remove("active");
 });
+
+
+/* =========================
+   ДОСТАВКА
+========================= */
 
 const openDelivery = document.getElementById("openDelivery");
 const closeDelivery = document.getElementById("closeDelivery");
 const deliveryModal = document.getElementById("deliveryModal");
 
-openDelivery.addEventListener("click", function() {
+openDelivery.addEventListener("click", function (event) {
+    event.preventDefault();
     deliveryModal.classList.add("active");
 });
 
-closeDelivery.addEventListener("click", function() {
+closeDelivery.addEventListener("click", function () {
     deliveryModal.classList.remove("active");
 });
 
 
+/* =========================
+   ОБЫЧНАЯ ЗАЯВКА
+========================= */
 
 const openContact = document.getElementById("openContact");
 const closeContact = document.getElementById("closeContact");
@@ -32,22 +46,24 @@ const contactForm = document.getElementById("contactForm");
 const phoneInput = document.getElementById("phone");
 const formMessage = document.getElementById("formMessage");
 
-
-openContact.addEventListener("click", function() {
+openContact.addEventListener("click", function () {
     contactModal.classList.add("active");
 });
 
-
-closeContact.addEventListener("click", function() {
+closeContact.addEventListener("click", function () {
     contactModal.classList.remove("active");
 });
 
-
-contactForm.addEventListener("submit", async function(event) {
+contactForm.addEventListener("submit", async function (event) {
 
     event.preventDefault();
 
-    const phone = phoneInput.value;
+    const phone = phoneInput.value.trim();
+
+    if (!phone) {
+        formMessage.textContent = "Введите номер телефона.";
+        return;
+    }
 
     formMessage.textContent = "Отправляем заявку...";
 
@@ -79,7 +95,7 @@ contactForm.addEventListener("submit", async function(event) {
         } else {
 
             formMessage.textContent =
-                "Не удалось отправить заявку.";
+                data.message || "Не удалось отправить заявку.";
 
         }
 
@@ -95,15 +111,24 @@ contactForm.addEventListener("submit", async function(event) {
 });
 
 
+/* =========================
+   КАТАЛОГ
+========================= */
+
 const catalogModal = document.getElementById("catalogModal");
 const closeCatalog = document.getElementById("closeCatalog");
-
-const productModal = document.getElementById("productModal");
-const closeProduct = document.getElementById("closeProduct");
 
 const catalogTitle = document.getElementById("catalogTitle");
 const catalogDescription = document.getElementById("catalogDescription");
 const productsGrid = document.getElementById("productsGrid");
+
+
+/* =========================
+   ОКНО ТОВАРА
+========================= */
+
+const productModal = document.getElementById("productModal");
+const closeProduct = document.getElementById("closeProduct");
 
 const productCategory = document.getElementById("productCategory");
 const productTitle = document.getElementById("productTitle");
@@ -111,6 +136,30 @@ const productDescription = document.getElementById("productDescription");
 const productPrice = document.getElementById("productPrice");
 const productOrder = document.getElementById("productOrder");
 
+
+/* =========================
+   ОКНО ЗАКАЗА
+========================= */
+
+const orderModal = document.getElementById("orderModal");
+const closeOrder = document.getElementById("closeOrder");
+
+const orderProduct = document.getElementById("orderProduct");
+const orderPrice = document.getElementById("orderPrice");
+const orderQuantity = document.getElementById("orderQuantity");
+const orderUnit = document.getElementById("orderUnit");
+const orderTotal = document.getElementById("orderTotal");
+
+const orderPhone = document.getElementById("orderPhone");
+const orderComment = document.getElementById("orderComment");
+
+const orderForm = document.getElementById("orderForm");
+const orderMessage = document.getElementById("orderMessage");
+
+
+/* =========================
+   ТОВАРЫ
+========================= */
 
 const catalogData = {
 
@@ -121,7 +170,8 @@ const catalogData = {
             {
                 name: "Газобетон D500",
                 description: "Стеновой газобетонный блок 600×300×200 мм.",
-                price: "от 7 500 ₽ / м³"
+                price: 7500,
+                unit: "м³"
             }
         ]
     },
@@ -133,7 +183,8 @@ const catalogData = {
             {
                 name: "Бетон М300",
                 description: "Готовая бетонная смесь для строительных работ.",
-                price: "от 6 500 ₽ / м³"
+                price: 6500,
+                unit: "м³"
             }
         ]
     },
@@ -145,7 +196,8 @@ const catalogData = {
             {
                 name: "Арматура А500С",
                 description: "Стальная арматура для железобетонных конструкций.",
-                price: "от 65 000 ₽ / тонна"
+                price: 65000,
+                unit: "тонна"
             }
         ]
     },
@@ -157,7 +209,8 @@ const catalogData = {
             {
                 name: "Доска обрезная",
                 description: "Строительная доска хвойных пород.",
-                price: "от 25 000 ₽ / м³"
+                price: 25000,
+                unit: "м³"
             }
         ]
     },
@@ -169,7 +222,8 @@ const catalogData = {
             {
                 name: "Металлочерепица",
                 description: "Профилированный кровельный материал.",
-                price: "от 700 ₽ / м²"
+                price: 700,
+                unit: "м²"
             }
         ]
     },
@@ -181,7 +235,8 @@ const catalogData = {
             {
                 name: "Минеральная вата",
                 description: "Теплоизоляционный материал для стен и кровли.",
-                price: "от 1 200 ₽ / упаковка"
+                price: 1200,
+                unit: "упаковка"
             }
         ]
     },
@@ -193,7 +248,8 @@ const catalogData = {
             {
                 name: "Цемент М500",
                 description: "Портландцемент для строительных работ.",
-                price: "от 450 ₽ / мешок"
+                price: 450,
+                unit: "мешок"
             }
         ]
     },
@@ -205,7 +261,8 @@ const catalogData = {
             {
                 name: "Щебень гранитный",
                 description: "Фракция 5–20 мм для строительных работ.",
-                price: "от 2 500 ₽ / тонна"
+                price: 2500,
+                unit: "тонна"
             }
         ]
     }
@@ -213,21 +270,34 @@ const catalogData = {
 };
 
 
-/* Открытие категории */
+/* =========================
+   ФОРМАТИРОВАНИЕ ЦЕНЫ
+========================= */
 
-document.querySelectorAll(".catalog-card").forEach(function(card) {
+function formatPrice(price) {
+    return new Intl.NumberFormat("ru-RU").format(price) + " ₽";
+}
 
-    card.addEventListener("click", function() {
+
+/* =========================
+   ОТКРЫТИЕ КАТЕГОРИИ
+========================= */
+
+document.querySelectorAll(".catalog-card").forEach(function (card) {
+
+    card.addEventListener("click", function () {
 
         const category = card.dataset.category;
         const data = catalogData[category];
+
+        if (!data) return;
 
         catalogTitle.textContent = data.title;
         catalogDescription.textContent = data.description;
 
         productsGrid.innerHTML = "";
 
-        data.products.forEach(function(product, index) {
+        data.products.forEach(function (product) {
 
             const productCard = document.createElement("div");
 
@@ -243,16 +313,23 @@ document.querySelectorAll(".catalog-card").forEach(function(card) {
                 <p>${product.description}</p>
 
                 <div class="product-card-price">
-                    ${product.price}
+                    от ${formatPrice(product.price)} / ${product.unit}
                 </div>
             `;
 
-            productCard.addEventListener("click", function() {
+            productCard.addEventListener("click", function () {
 
                 productCategory.textContent = data.title;
                 productTitle.textContent = product.name;
                 productDescription.textContent = product.description;
-                productPrice.textContent = product.price;
+
+                productPrice.textContent =
+                    "от " + formatPrice(product.price) +
+                    " / " + product.unit;
+
+                productModal.dataset.productName = product.name;
+                productModal.dataset.productPrice = product.price;
+                productModal.dataset.productUnit = product.unit;
 
                 productModal.classList.add("active");
 
@@ -269,35 +346,175 @@ document.querySelectorAll(".catalog-card").forEach(function(card) {
 });
 
 
-/* Закрытие каталога */
+/* =========================
+   ЗАКРЫТИЕ КАТАЛОГА
+========================= */
 
-closeCatalog.addEventListener("click", function() {
+closeCatalog.addEventListener("click", function () {
     catalogModal.classList.remove("active");
 });
 
 
-/* Закрытие товара */
+/* =========================
+   ЗАКРЫТИЕ ТОВАРА
+========================= */
 
-closeProduct.addEventListener("click", function() {
+closeProduct.addEventListener("click", function () {
     productModal.classList.remove("active");
 });
 
 
-/* Получить расчёт */
+/* =========================
+   ПОЛУЧИТЬ РАСЧЁТ
+========================= */
 
-productOrder.addEventListener("click", function() {
+productOrder.addEventListener("click", function () {
+
+    const productName = productModal.dataset.productName;
+    const price = Number(productModal.dataset.productPrice);
+    const unit = productModal.dataset.productUnit;
+
+    orderProduct.textContent = productName;
+    orderPrice.textContent =
+        formatPrice(price) + " / " + unit;
+
+    orderQuantity.value = 1;
+    orderUnit.textContent = unit;
+
+    updateTotal();
 
     productModal.classList.remove("active");
     catalogModal.classList.remove("active");
 
-    contactModal.classList.add("active");
+    orderModal.classList.add("active");
 
 });
 
 
-/* Закрытие по фону */
+/* =========================
+   РАСЧЁТ СУММЫ
+========================= */
 
-catalogModal.addEventListener("click", function(event) {
+function updateTotal() {
+
+    const price = Number(productModal.dataset.productPrice);
+    const quantity = Number(orderQuantity.value);
+
+    if (!quantity || quantity < 1) {
+        orderTotal.textContent = "0 ₽";
+        return;
+    }
+
+    const total = price * quantity;
+
+    orderTotal.textContent = formatPrice(total);
+
+}
+
+orderQuantity.addEventListener("input", updateTotal);
+
+
+/* =========================
+   ОТПРАВКА ЗАКАЗА
+========================= */
+
+orderForm.addEventListener("submit", async function (event) {
+
+    event.preventDefault();
+
+    const product = productModal.dataset.productName;
+    const price = Number(productModal.dataset.productPrice);
+    const unit = productModal.dataset.productUnit;
+
+    const quantity = Number(orderQuantity.value);
+    const phone = orderPhone.value.trim();
+    const comment = orderComment.value.trim();
+
+    if (!quantity || quantity < 1) {
+        orderMessage.textContent = "Укажите количество.";
+        return;
+    }
+
+    if (!phone) {
+        orderMessage.textContent = "Введите номер телефона.";
+        return;
+    }
+
+    const total = price * quantity;
+
+    orderMessage.textContent = "Отправляем заявку...";
+
+    try {
+
+        const response = await fetch("/api/order", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                product,
+                price,
+                unit,
+                quantity,
+                total,
+                phone,
+                comment
+            })
+
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+
+            orderMessage.textContent =
+                "Заявка отправлена! Мы свяжемся с вами.";
+
+            orderForm.reset();
+
+            orderQuantity.value = 1;
+
+            setTimeout(function () {
+                orderModal.classList.remove("active");
+                orderMessage.textContent = "";
+            }, 1800);
+
+        } else {
+
+            orderMessage.textContent =
+                data.message || "Не удалось отправить заявку.";
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        orderMessage.textContent =
+            "Ошибка соединения с сервером.";
+
+    }
+
+});
+
+
+/* =========================
+   ЗАКРЫТИЕ ЗАКАЗА
+========================= */
+
+closeOrder.addEventListener("click", function () {
+    orderModal.classList.remove("active");
+});
+
+
+/* =========================
+   ЗАКРЫТИЕ ПО ФОНУ
+========================= */
+
+catalogModal.addEventListener("click", function (event) {
 
     if (event.target === catalogModal) {
         catalogModal.classList.remove("active");
@@ -305,11 +522,18 @@ catalogModal.addEventListener("click", function(event) {
 
 });
 
-
-productModal.addEventListener("click", function(event) {
+productModal.addEventListener("click", function (event) {
 
     if (event.target === productModal) {
         productModal.classList.remove("active");
     }
 
 });
+
+orderModal.addEventListener("click", function (event) {
+
+    if (event.target === orderModal) {
+        orderModal.classList.remove("active");
+    }
+
+})
