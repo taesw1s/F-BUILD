@@ -641,3 +641,89 @@ a {
     font-size: 30px;
     cursor: pointer;
 }
+.phone-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.phone-input {
+    width: 210px;
+    height: 46px;
+
+    padding: 0 16px;
+
+    border: 1px solid #d0d0cb;
+    border-radius: 4px;
+
+    background: #fff;
+
+    color: #171717;
+    font-family: inherit;
+    font-size: 13px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.phone-input::placeholder {
+    color: #999;
+}
+
+.phone-input:focus {
+    border-color: #171717;
+}
+
+.header-button {
+    height: 46px;
+
+    padding: 0 22px;
+
+    border: none;
+    border-radius: 4px;
+
+    background: #171717;
+    color: #fff;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.header-button:hover {
+    background: #333;
+    transform: translateY(-1px);
+}
+.delivery-contact {
+    margin-top: 30px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #ccc;
+}
+
+.delivery-contact h3 {
+    margin-bottom: 15px;
+
+    font-size: 16px;
+}
+
+.delivery-contact a {
+    display: block;
+
+    margin-top: 10px;
+
+    color: #171717;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.delivery-contact a:hover {
+    opacity: 0.6;
+}
