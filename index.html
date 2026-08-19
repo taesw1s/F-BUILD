@@ -41,13 +41,13 @@
             <a href="#">Контакты</a>
         </nav>
 
-        
+      
           
 
-            <button class="header-button" id="openContact">
+            <button class="header-button" id="openContact"> 
                 Связаться
             </button>
-        </div>
+        
 
     </div>
 
@@ -114,150 +114,146 @@
     <div class="container">
 
         <div class="section-top">
-
             <div>
+                <div class="section-label">КАТЕГОРИИ</div>
 
-                <div class="section-label">
-                    КАТЕГОРИИ
-                </div>
-
-                <h2>
-                    Строительные материалы
-                </h2>
-
+                <h2>Строительные материалы</h2>
             </div>
 
             <p>
                 Основные материалы для строительства
                 и комплектации объектов.
             </p>
-
         </div>
 
 
         <div class="materials-grid">
 
-            <div class="material-card">
-
+            <!-- 01 -->
+            <div class="material-card catalog-card" data-category="brick">
                 <span>01</span>
 
-                <h3>
-                    Кирпич<br>
-                    и блоки
-                </h3>
+                <div class="catalog-arrow">↗</div>
 
-                <p>
-                    Материалы для стен и перегородок
-                </p>
+                <div class="catalog-card-content">
+                    <h3>Кирпич<br>и блоки</h3>
 
+                    <p>
+                        Материалы для стен и перегородок
+                    </p>
+                </div>
             </div>
 
 
-            <div class="material-card">
-
+            <!-- 02 -->
+            <div class="material-card catalog-card" data-category="concrete">
                 <span>02</span>
 
-                <h3>
-                    Бетон<br>
-                    и ЖБИ
-                </h3>
+                <div class="catalog-arrow">↗</div>
 
-                <p>
-                    Бетонные смеси и железобетонные изделия
-                </p>
+                <div class="catalog-card-content">
+                    <h3>Бетон<br>и ЖБИ</h3>
 
+                    <p>
+                        Бетонные смеси и железобетонные изделия
+                    </p>
+                </div>
             </div>
 
 
-            <div class="material-card">
-
+            <!-- 03 -->
+            <div class="material-card catalog-card" data-category="metal">
                 <span>03</span>
 
-                <h3>
-                    Арматура<br>
-                    и металл
-                </h3>
+                <div class="catalog-arrow">↗</div>
 
-                <p>
-                    Металлопрокат для строительства
-                </p>
+                <div class="catalog-card-content">
+                    <h3>Арматура<br>и металл</h3>
 
+                    <p>
+                        Металлопрокат для строительства
+                    </p>
+                </div>
             </div>
 
 
-            <div class="material-card">
-
+            <!-- 04 -->
+            <div class="material-card catalog-card" data-category="wood">
                 <span>04</span>
 
-                <h3>
-                    Пиломатериалы
-                </h3>
+                <div class="catalog-arrow">↗</div>
 
-                <p>
-                    Древесина для строительных работ
-                </p>
+                <div class="catalog-card-content">
+                    <h3>Пиломатериалы</h3>
 
+                    <p>
+                        Древесина для строительных работ
+                    </p>
+                </div>
             </div>
 
 
-            <div class="material-card">
-
+            <!-- 05 -->
+            <div class="material-card catalog-card" data-category="roof">
                 <span>05</span>
 
-                <h3>
-                    Кровля
-                </h3>
+                <div class="catalog-arrow">↗</div>
 
-                <p>
-                    Материалы для кровельных систем
-                </p>
+                <div class="catalog-card-content">
+                    <h3>Кровля</h3>
 
+                    <p>
+                        Материалы для кровельных систем
+                    </p>
+                </div>
             </div>
 
 
-            <div class="material-card">
-
+            <!-- 06 -->
+            <div class="material-card catalog-card" data-category="insulation">
                 <span>06</span>
 
-                <h3>
-                    Утеплители
-                </h3>
+                <div class="catalog-arrow">↗</div>
 
-                <p>
-                    Теплоизоляционные материалы
-                </p>
+                <div class="catalog-card-content">
+                    <h3>Утеплители</h3>
 
+                    <p>
+                        Теплоизоляционные материалы
+                    </p>
+                </div>
             </div>
 
 
-            <div class="material-card">
-
+            <!-- 07 -->
+            <div class="material-card catalog-card" data-category="mixes">
                 <span>07</span>
 
-                <h3>
-                    Сухие смеси
-                </h3>
+                <div class="catalog-arrow">↗</div>
 
-                <p>
-                    Цемент, растворы и строительные смеси
-                </p>
+                <div class="catalog-card-content">
+                    <h3>Сухие смеси</h3>
 
+                    <p>
+                        Цемент, растворы и строительные смеси
+                    </p>
+                </div>
             </div>
 
 
-            <div class="material-card">
-
+            <!-- 08 -->
+            <div class="material-card catalog-card" data-category="bulk">
                 <span>08</span>
 
-                <h3>
-                    Сыпучие
-                    материалы
-                </h3>
+                <div class="catalog-arrow">↗</div>
 
-                <p>
-                    Песок, щебень и другие материалы
-                </p>
+                <div class="catalog-card-content">
+                    <h3>Сыпучие<br>материалы</h3>
 
+                    <p>
+                        Песок, щебень и другие материалы
+                    </p>
+                </div>
             </div>
 
         </div>
@@ -265,6 +261,75 @@
     </div>
 
 </section>
+
+
+<!-- ================= CATALOG MODAL ================= -->
+
+<div class="modal catalog-modal" id="catalogModal">
+
+    <div class="modal-content catalog-modal-content">
+
+        <button class="modal-close" id="closeCatalog">
+            ×
+        </button>
+
+        <div class="section-label" id="catalogLabel">
+            КАТАЛОГ
+        </div>
+
+        <h2 id="catalogTitle">
+            Кирпич и блоки
+        </h2>
+
+        <p id="catalogDescription">
+            Материалы для строительства.
+        </p>
+
+        <div class="products-grid" id="productsGrid">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= PRODUCT MODAL ================= -->
+
+<div class="modal product-modal" id="productModal">
+
+    <div class="modal-content product-modal-content">
+
+        <button class="modal-close" id="closeProduct">
+            ×
+        </button>
+
+        <div class="product-image" id="productImage">
+            ФОТО ТОВАРА
+        </div>
+
+        <div class="section-label" id="productCategory">
+            СТРОИТЕЛЬНЫЕ МАТЕРИАЛЫ
+        </div>
+
+        <h2 id="productTitle">
+            Товар
+        </h2>
+
+        <p id="productDescription">
+            Описание товара.
+        </p>
+
+        <div class="product-price" id="productPrice">
+            Цена по запросу
+        </div>
+
+        <button class="primary-button product-order" id="productOrder">
+            Получить расчёт
+        </button>
+
+    </div>
+
+</div>
 
 
 <!-- ================= ADVANTAGES ================= -->
