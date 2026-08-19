@@ -18,7 +18,7 @@ const WEBHOOK_URL = `${SITE_URL}/telegram-webhook`;
 
 
 /* =========================
-   ЗАЯВКИ С САЙТА
+   ЗАЯВКА «СВЯЗАТЬСЯ»
 ========================= */
 
 app.post("/api/contact", async (req, res) => {
@@ -74,7 +74,101 @@ app.post("/api/contact", async (req, res) => {
             success: false,
             message: "Не удалось отправить заявку"
         });
+
     }
+
+});
+
+
+/* =========================
+   ЗАКАЗ ИЗ КАТАЛОГА
+========================= */
+
+app.post("/api/order", async (req, res) => {
+
+    const {
+        product,
+        price,
+        unit,
+        quantity,
+        total,
+        phone,
+        comment
+    } = req.body;
+
+
+    if (!product || !quantity || !phone) {
+
+        return res.status(400).json({
+            success: false,
+            message: "Заполните обязательные поля"
+        });
+
+    }
+
+
+    const message = `
+🏗️ НОВЫЙ ЗАКАЗ F-BUILD
+
+📦 Товар: ${product}
+
+🔢 Количество: ${quantity} ${unit}
+
+💰 Цена: ${Number(price).toLocaleString("ru-RU")} ₽ / ${unit}
+
+💵 Сумма: ${Number(total).toLocaleString("ru-RU")} ₽
+
+📞 Телефон: ${phone}
+
+📝 Комментарий:
+${comment || "Не указан"}
+`;
+
+
+    try {
+
+        const response = await fetch(
+            `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message
+                })
+
+            }
+        );
+
+
+        const data = await response.json();
+
+
+        if (!data.ok) {
+            throw new Error("Telegram API error");
+        }
+
+
+        res.json({
+            success: true
+        });
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            success: false,
+            message: "Не удалось отправить заказ"
+        });
+
+    }
+
 });
 
 
@@ -86,7 +180,6 @@ app.post("/telegram-webhook", async (req, res) => {
 
     const update = req.body;
 
-    // Сразу отвечаем Telegram
     res.sendStatus(200);
 
     if (!update.message) {
@@ -96,7 +189,7 @@ app.post("/telegram-webhook", async (req, res) => {
     const chatId = update.message.chat.id;
     const text = update.message.text;
 
-    // Команда /start
+
     if (text === "/start") {
 
         const welcomeMessage = `
@@ -113,6 +206,7 @@ ${SITE_URL}
 Мы свяжемся с вами и обсудим ваш проект.
 `;
 
+
         try {
 
             await fetch(
@@ -128,21 +222,26 @@ ${SITE_URL}
                         chat_id: chatId,
                         text: welcomeMessage
                     })
+
                 }
             );
 
         } catch (error) {
 
-            console.error("Ошибка отправки сообщения бота:", error);
+            console.error(
+                "Ошибка отправки сообщения бота:",
+                error
+            );
 
         }
+
     }
 
 });
 
 
 /* =========================
-   УСТАНОВКА WEBHOOK
+   WEBHOOK
 ========================= */
 
 async function setupWebhook() {
@@ -159,21 +258,28 @@ async function setupWebhook() {
 
     } catch (error) {
 
-        console.error("Ошибка установки webhook:", error);
+        console.error(
+            "Ошибка установки webhook:",
+            error
+        );
 
     }
+
 }
 
 
 /* =========================
-   ЗАПУСК СЕРВЕРА
+   ЗАПУСК
 ========================= */
 
 app.listen(PORT, async () => {
 
-    console.log(`F-BUILD запущен на порту ${PORT}`);
+    console.log(
+        `F-BUILD запущен на порту ${PORT}`
+    );
 
     await setupWebhook();
 
 });
+
 
