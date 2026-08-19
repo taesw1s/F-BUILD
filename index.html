@@ -37,14 +37,15 @@
         <nav class="navigation">
             <a href="#materials">Материалы</a>
             <a href="#" id="openAbout">О компании</a>
-            <a href="#">Доставка</a>
+            <a href="#" id="openDelivery">Доставка</a>
             <a href="#">Контакты</a>
         </nav>
 
-        <div class="header-contact">
-            <span>+7 (___) ___-__-__</span>
+        <div class="phone-form">
+            <input type="tel" class="phone-input" placeholder="+7(___) ___-__-__">
+          
 
-            <button class="header-button">
+            <button class="header-button" id="openContact">
                 Связаться
             </button>
         </div>
@@ -481,6 +482,102 @@
     </div>
 
 </div>
+
+<!-- ================= DELIVERY MODAL ================= -->
+
+<div class="modal" id="deliveryModal">
+
+    <div class="modal-content">
+
+        <button class="modal-close" id="closeDelivery">
+            ×
+        </button>
+
+        <span class="section-label">
+            ДОСТАВКА
+        </span>
+
+        <h2>
+            Доставим материалы
+            прямо на объект.
+        </h2>
+
+        <p>
+            Организуем доставку строительных материалов
+            непосредственно на строительную площадку.
+        </p>
+
+        <p>
+            Стоимость и сроки доставки рассчитываются
+            индивидуально в зависимости от объёма заказа
+            и адреса объекта.
+        </p>
+
+        <div class="delivery-contact">
+
+            <h3>Связаться с нами</h3>
+
+            <p >
+                📞 +7 (927) 200-92-27
+            </p>
+
+            <a href="https://mail.ru/">
+                ✉ fedin-timur@inbox.ru 
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="modal" id="contactModal">
+
+    <div class="modal-content">
+
+        <button class="modal-close" id="closeContact">
+            ×
+        </button>
+
+        <span class="section-label">
+            СВЯЗАТЬСЯ С НАМИ
+        </span>
+
+        <h2>
+            Оставьте свой номер.
+        </h2>
+
+        <p>
+            Мы свяжемся с вами и обсудим
+            ваш проект и необходимые материалы.
+        </p>
+
+        <form id="contactForm">
+
+            <input
+                type="tel"
+                id="phone"
+                class="phone-input"
+                placeholder="+7 (___) ___-__-__"
+                required
+            >
+
+            <button
+                type="submit"
+                class="primary-button"
+            >
+                Отправить заявку
+            </button>
+
+        </form>
+
+        <p id="formMessage"></p>
+
+    </div>
+
+</div>
+
 
 <!-- ================= FOOTER ================= -->
 
