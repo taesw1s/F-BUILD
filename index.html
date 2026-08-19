@@ -642,6 +642,113 @@
 
 </div>
 
+<!-- =========================
+     ORDER MODAL
+========================= -->
+
+<div class="modal" id="orderModal">
+
+    <div class="modal-content order-modal-content">
+
+        <button class="modal-close" id="closeOrder">
+            ×
+        </button>
+
+        <div class="section-label">
+            ЗАКАЗ МАТЕРИАЛОВ
+        </div>
+
+        <h2>
+            Оформить заявку
+        </h2>
+
+        <div class="order-product">
+
+            <strong id="orderProduct">
+                Товар
+            </strong>
+
+            <span id="orderPrice">
+                0 ₽
+            </span>
+
+        </div>
+
+
+        <form id="orderForm">
+
+            <label>
+                Количество
+            </label>
+
+            <div class="quantity-row">
+
+                <input
+                    type="number"
+                    id="orderQuantity"
+                    min="1"
+                    value="1"
+                    required
+                >
+
+                <span id="orderUnit">
+                    шт.
+                </span>
+
+            </div>
+
+
+            <div class="order-total">
+
+                <span>
+                    Ориентировочная сумма
+                </span>
+
+                <strong id="orderTotal">
+                    0 ₽
+                </strong>
+
+            </div>
+
+
+            <label>
+                Номер телефона
+            </label>
+
+            <input
+                type="tel"
+                id="orderPhone"
+                placeholder="+7 (___) ___-__-__"
+                required
+            >
+
+
+            <label>
+                Комментарий
+            </label>
+
+            <textarea
+                id="orderComment"
+                placeholder="Адрес доставки, пожелания и т.д."
+                rows="4"
+            ></textarea>
+
+
+            <button
+                type="submit"
+                class="primary-button"
+            >
+                Отправить заявку
+            </button>
+
+            <p id="orderMessage"></p>
+
+        </form>
+
+    </div>
+
+</div>
+
 
 <!-- ================= FOOTER ================= -->
 
