@@ -896,3 +896,120 @@ a {
 
     cursor: pointer;
 }
+
+
+/* =========================
+   ORDER MODAL
+========================= */
+
+.order-modal-content {
+    width: min(600px, 92%);
+}
+
+.order-product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 30px;
+    padding: 20px;
+
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+.order-product strong {
+    font-size: 16px;
+}
+
+.order-product span {
+    color: #666;
+    font-size: 14px;
+}
+
+#orderForm {
+    margin-top: 25px;
+}
+
+#orderForm label {
+    display: block;
+
+    margin-top: 18px;
+    margin-bottom: 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#orderForm input,
+#orderForm textarea {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border: 1px solid #d0d0cb;
+    border-radius: 4px;
+
+    background: #fff;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+}
+
+#orderForm textarea {
+    resize: vertical;
+}
+
+#orderForm input:focus,
+#orderForm textarea:focus {
+    border-color: #171717;
+}
+
+.quantity-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.quantity-row input {
+    width: 120px !important;
+}
+
+.quantity-row span {
+    color: #777;
+    font-size: 14px;
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 25px;
+    padding: 20px 0;
+
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.order-total span {
+    color: #777;
+    font-size: 13px;
+}
+
+.order-total strong {
+    font-size: 21px;
+}
+
+#orderForm button {
+    margin-top: 25px;
+}
+
+#orderMessage {
+    margin-top: 15px !important;
+
+    color: #555;
+    font-size: 13px;
+}
